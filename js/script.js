@@ -1,3 +1,26 @@
+let keyboard = document.querySelector('.piano__keyboard')
+let pianoNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
+
+let init = () => {
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 0; j < 7; j++) {
+            let key = createKey('white', pianoNotes[j], i)
+            keyboard.appendChild(key);
+
+            if (j != 2 && j != 6) {
+                key = createKey('black', pianoNotes[j], i)
+                let emptySpace = document.createElement('div')
+                emptySpace.className = 'empty-space'
+                emptySpace.appendChild(key)
+                keyboard.appendChild(emptySpace)
+            }
+
+        }
+    }
+}
+
+
+
 // Create key
 let createKey = (type, note, octave) => {
     let key = document.createElement('button')
@@ -9,3 +32,5 @@ let createKey = (type, note, octave) => {
     return key;
 
 }
+
+init();
