@@ -18,3 +18,36 @@ body{
     align-items: center;
       
 }
+
+.piano__body{
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+}
+
+.piano__speaker{
+    width: 300px;
+    height: 150px;
+    border-radius: 15px;
+    background:
+                radial-gradient(black 15%, transparent 16%) 0 0,
+                radial-gradient(black 15%, transparent 16%) 8px 8px,
+                radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+                radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+                background-color:#282828;
+                background-size:16px 16px;
+}
+
+
+.piano__interface{
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #333;
+    box-shadow: inset 0 0 10px #111;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+}
