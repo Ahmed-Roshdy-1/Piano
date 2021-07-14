@@ -1,7 +1,8 @@
 let keyboard = document.querySelector('.piano__keyboard')
 let controls = document.querySelectorAll('.piano__control__option')
 let pianoNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-let keyMap = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N'];
+let keyMap = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N']
+let keys = []
 
 // initial function 
 let init = () => {
@@ -33,6 +34,7 @@ let createKey = (type, note, octave) => {
     key.dataset.letterNote = type == 'white' ? note + octave : note + '#' + octave;
     key.dataset.letterNoteFileName = type == 'white' ? note + octave : note + 's' + octave;
     key.textContent = key.dataset.letterNote
+    keys.push(key)
 
 
 
@@ -57,5 +59,23 @@ let playSound = (key) => {
     audio.src = 'sounds/' + key.dataset.letterNoteFileName + '.mp3'
     audio.play().then(() => audio.remove())
 }
+
+
+controls.forEach((input) => {
+    input.addEventListener('input', () => {
+        let value = input.value
+        let type
+        switch (value) {
+            case 'letterNotes': type = 'letterNote'; break;
+            case 'keyboard': type = 'keyboard'; break;
+            case 'none': type = ''; break;
+        }
+        keys.forEach((key) => {
+            key.textContent = key.dataset[type]
+        })
+
+    })
+
+})
 
 init();
