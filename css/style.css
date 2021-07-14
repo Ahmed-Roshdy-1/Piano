@@ -100,3 +100,7 @@ body{
 .piano__key--white{
     padding-top: 180px;
 }
+
+.piano__key--playing {
+    background-color: #74b9ff;
+}

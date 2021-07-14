@@ -1,6 +1,7 @@
 let keyboard = document.querySelector('.piano__keyboard')
 let pianoNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 
+// initial function 
 let init = () => {
     for (let i = 1; i <= 5; i++) {
         for (let j = 0; j < 7; j++) {
@@ -29,8 +30,26 @@ let createKey = (type, note, octave) => {
     key.dataset.letterNoteFileName = type == 'white' ? note + octave : note + 's' + octave;
     key.textContent = key.dataset.letterNote
 
+    key.addEventListener('mousedown', () => {
+        playSound(key);
+        key.classList.add('piano__key--playing')
+    })
+    key.addEventListener('mouseup', () => {
+        key.classList.remove('piano__key--playing')
+    })
+    key.addEventListener('mouseleave', () => {
+        key.classList.remove('piano__key--playing')
+    })
+
     return key;
 
+}
+
+// adding sounds
+let playSound = (key) => {
+    let audio = document.createElement('audio');
+    audio.src = 'sounds/' + key.dataset.letterNoteFileName + '.mp3'
+    audio.play().then(() => audio.remove())
 }
 
 init();
