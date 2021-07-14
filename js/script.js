@@ -3,6 +3,22 @@ let controls = document.querySelectorAll('.piano__control__option')
 let pianoNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 let keyMap = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N']
 let keys = []
+let playBtn = document.querySelector('.piano__play-btn')
+
+
+let jingleBells = `B3,,B3,,B3,,,,B3,,B3,,B3,,,,
+                       B3,,D4,,G3,,A3,B3,,,,,,
+                       C4,,C4,,C4,,,,C4,C4,,B3,,B3,,,,
+                       B3,B3,B3,,A3,,A3,,B3,,A3,,,,D4`
+let happyBirthday = `G4,G4,A4,,G4,,C5,,B4,,,,
+                     G4,G4,A4,,G4,,D5,,C5,,,,
+                     G4,G4,G5,,E5,,C5,,B4,,A4,,
+                     F5,F5,E5,,C5,,D5,,C5,,,,`
+
+
+
+
+
 
 // initial function 
 let init = () => {
@@ -53,7 +69,7 @@ let createKey = (type, note, octave) => {
 
 }
 
-// hi
+
 
 
 
@@ -114,6 +130,43 @@ controls.forEach((input) => {
 
     })
 
+})
+
+
+
+
+
+
+// Autoplay songs
+let playSong = (notesString, tempo) => {
+    let notes = notesString.split(',')
+    let currentNote = 0
+    let mousedown = new Event('mousedown')
+    let mouseup = new Event('mouseup')
+    let btn
+
+    let interval = setInterval(() => {
+        if (currentNote < notes.length) {
+            if (notes[currentNote].trim() != '') {
+                if (btn) {
+                    btn.dispatchEvent(mouseup)
+                }
+                btn = document.querySelector(
+                    `[data-letter-note=${notes[currentNote]}]`
+                );
+                btn.dispatchEvent(mousedown);
+            }
+            currentNote++
+        } else {
+            btn.dispatchEvent(mouseup)
+            clearInterval(interval)
+        }
+    }, 200)
+
+}
+
+playBtn.addEventListener('mousedown', () => {
+    playSong(happyBirthday, 2)
 })
 
 init();
