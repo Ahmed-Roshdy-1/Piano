@@ -3,6 +3,8 @@ let controls = document.querySelectorAll('.piano__control__option')
 let pianoNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 let keyMap = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N']
 let keys = []
+let tempoSelect = document.querySelector('.piano__tempo')
+let songSelect = document.querySelector('.piano__song-list')
 let playBtn = document.querySelector('.piano__play-btn')
 
 
@@ -10,6 +12,7 @@ let jingleBells = `B3,,B3,,B3,,,,B3,,B3,,B3,,,,
                        B3,,D4,,G3,,A3,B3,,,,,,
                        C4,,C4,,C4,,,,C4,C4,,B3,,B3,,,,
                        B3,B3,B3,,A3,,A3,,B3,,A3,,,,D4`
+
 let happyBirthday = `G4,G4,A4,,G4,,C5,,B4,,,,
                      G4,G4,A4,,G4,,D5,,C5,,,,
                      G4,G4,G5,,E5,,C5,,B4,,A4,,
@@ -137,8 +140,8 @@ controls.forEach((input) => {
 
 
 
-// Autoplay songs
-let playSong = (notesString, tempo) => {
+// adding Autoplay songs
+let playSong = (notesString, tempo, cb) => {
     let notes = notesString.split(',')
     let currentNote = 0
     let mousedown = new Event('mousedown')
@@ -160,13 +163,28 @@ let playSong = (notesString, tempo) => {
         } else {
             btn.dispatchEvent(mouseup)
             clearInterval(interval)
+            cb()
         }
-    }, 200)
+    }, 450 / tempo)
 
 }
 
 playBtn.addEventListener('mousedown', () => {
-    playSong(happyBirthday, 2)
+    let tempo = +tempoSelect.value
+    let songNum = +songSelect.value
+    playBtn.disabled = true
+
+    let enableplaybtn = () => playBtn.disabled = false
+
+    switch (songNum) {
+        case 1: playSong(jingleBells, tempo, enableplaybtn); break;
+
+        case 2: playSong(happyBirthday, tempo, enableplaybtn); break;
+    }
+
 })
+
+
+
 
 init();
