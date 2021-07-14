@@ -54,7 +54,7 @@ body{
 }
 
 .piano__play-btn , select{
-    font-size: 20px;
+    font-size: 16px;
     background-color: #333;
     color: #fff;
     border-radius: 15px;
