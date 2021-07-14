@@ -17,6 +17,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    border-radius: 15% 15% 0 0;
       
 }
 
@@ -26,7 +27,7 @@ body{
      display: flex;
      align-items: center;
      justify-content: space-around;
-}
+     }
 
 .piano__speaker{
     width: 300px;
