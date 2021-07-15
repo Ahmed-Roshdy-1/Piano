@@ -95,7 +95,7 @@ let pressKey = (mouseEvent, e) => {
         selector = `[data-keyboard="⇧+${lastLetter}"]`
 
     } else {
-        selector = `[data-keyboard=${lastLetter}]`
+        selector = `[data-keyboard="${lastLetter}"]`
     }
     let key = document.querySelector(selector)
     if (key !== null) {
