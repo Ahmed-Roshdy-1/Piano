@@ -6,5 +6,6 @@
 ##  ✔ tempo option (slow,normal,fast)
 ##  ✔ faintly play butten
 
-## Screenshot ![piano](https://user-images.githubusercontent.com/65695097/125708569-412c923b-d47c-4f76-87b4-fee9832d909c.png)
+## Screenshot 
+![piano](https://user-images.githubusercontent.com/65695097/125708569-412c923b-d47c-4f76-87b4-fee9832d909c.png)
 
