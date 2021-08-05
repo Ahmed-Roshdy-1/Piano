@@ -1,4 +1,4 @@
-# Piano : [See a live demo of the project](https://ahmed-roshdy-1.github.io/Piano/Index)
+# Piano : [See a live demo of the project](https://ahmed-roshdy-1.github.io/Piano/)
 
 # it is virtual piano has : 
 ##  ✔ a play option(Letter Notes, Keyboard, none)
